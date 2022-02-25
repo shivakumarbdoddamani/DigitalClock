@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, ActivityIndicator, Image, View} from 'react-native';
+import {StyleSheet, ActivityIndicator, Image, View, Text} from 'react-native';
 
 class LoadingPage extends Component {
   constructor(props) {
@@ -10,8 +10,15 @@ class LoadingPage extends Component {
     const logo = require('../assets/img/ic_launcher_round.png');
     return (
       <View style={styles.container}>
-        <Image style={styles.logo} source={logo} />
-        <ActivityIndicator size="large" />
+        <View style={styles.flex}>
+          <Image style={styles.logo} source={logo} />
+        </View>
+        <View style={styles.flex}>
+          <Text style={styles.txt}>Welcome to Digital Clock</Text>
+        </View>
+        <View style={styles.flex}>
+          <ActivityIndicator size="large" />
+        </View>
       </View>
     );
   }
@@ -23,6 +30,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'white',
+  },
+  flex: {
+    flex: 1,
   },
   logo: {
     width: 200,
