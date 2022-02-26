@@ -11,10 +11,10 @@ class LoadingPage extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.flex}>
-          <Image style={styles.logo} source={logo} />
+          <Text style={styles.txt}>Welcome to Digital Clock</Text>
         </View>
         <View style={styles.flex}>
-          <Text style={styles.txt}>Welcome to Digital Clock</Text>
+          <Image style={styles.logo} source={logo} />
         </View>
         <View style={styles.flex}>
           <ActivityIndicator size="large" />
@@ -33,6 +33,8 @@ const styles = StyleSheet.create({
   },
   flex: {
     flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   logo: {
     width: 200,
