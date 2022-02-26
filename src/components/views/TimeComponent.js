@@ -1,11 +1,6 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 
-const options = {
-  hour: 'numeric',
-  minute: 'numeric',
-  hour12: true,
-};
 class TimeComponent extends Component {
   constructor(props) {
     super(props);
@@ -34,6 +29,10 @@ class TimeComponent extends Component {
   componentWillUnmount() {
     clearInterval(this.interval);
   }
+
+  getWeekDay = (Day) => {
+    return ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"][Day];
+  };
 
   convertTimeFormat = dateObj => {
     const hours = dateObj.getHours();
@@ -65,6 +64,7 @@ class TimeComponent extends Component {
     return (
       <View style={styles.container}>
         <Text style={styles.txt}>Today's Date: {this.state.date.slice(4,6)} {this.state.date.slice(0,3)} {year}</Text>
+        <Text style={styles.txt}>Day: {this.getWeekDay(this.state.time.getDay())}</Text>
         <Text style={styles.txt}>Time: {this.convertTimeFormat(this.state.time)}</Text>
       </View>
     );
