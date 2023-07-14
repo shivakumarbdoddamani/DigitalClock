@@ -7,7 +7,7 @@ class TimeComponent extends Component {
     super(props);
     this.state = {
       time: new Date(),
-      date: new Date().toLocaleString().slice(4, 10),
+      date: new Date().toLocaleDateString('en-GB'),
       timer: null,
       minutesCounter: '00',
       secondsCounter: '00',
@@ -26,7 +26,7 @@ class TimeComponent extends Component {
 
   componentDidUpdate() {
     const {date} = this.state;
-    const currentDate = new Date().toLocaleString().slice(4, 10);
+    const currentDate = new Date().toLocaleDateString('en-GB');
     if (currentDate !== date) {
       this.setState({date: currentDate});
     }
@@ -103,15 +103,13 @@ class TimeComponent extends Component {
     return timeString;
   };
   render() {
-    const year = new Date().getFullYear();
     return (
       <View style={styles.container}>
         <Card style={styles.card}>
           <Card.Title title="Date & Time" titleStyle={styles.titleText} />
           <View style={styles.flex}>
             <Text style={styles.text}>
-              Date: {this.state.date.slice(4, 6)} {this.state.date.slice(0, 3)}{' '}
-              {year}
+              Date: {this.state.date}
             </Text>
             <Text style={styles.text}>
               Day: {this.getWeekDay(this.state.time.getDay())}
